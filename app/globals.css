@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 微调 — 让卡片在暗色模式下更舒服一些 */
+@layer components {
+  .prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* 适度的背景玻璃效果（配合卡片样式） */
+.bg-frost {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  backdrop-filter: blur(6px);
+}
