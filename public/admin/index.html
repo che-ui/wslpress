@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Content Manager</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- Netlify Identity widget (for login) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Decap / Netlify CMS (v2) from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.css" />
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <style>
+      /* optional small styling so CMS occupies full viewport */
+      html,body,#nc-root { height: 100%; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <!-- Netlify CMS will load config at /admin/config.yml automatically -->
+    <script>
+      // Init Netlify Identity so users can login via Netlify Identity UI
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            // automatically show the login widget when visiting /admin
+            window.netlifyIdentity.open();
+          }
+        });
+        // Reopen the widget on logout if needed
+        window.netlifyIdentity.on("logout", () => console.log("Logged out"));
+      }
+    </script>
+  </body>
+</html>
