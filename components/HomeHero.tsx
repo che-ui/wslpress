@@ -24,10 +24,10 @@ export default function HomeHero() {
                 了解我们
               </Link>
               <Link
-                href="/posts"
+                href="/search"
                 className="inline-flex items-center rounded-md bg-white text-slate-900 px-4 py-2 text-sm font-medium shadow-sm"
               >
-                阅读最新文章
+                全局搜索
               </Link>
             </div>
           </div>
