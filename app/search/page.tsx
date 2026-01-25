@@ -10,7 +10,8 @@ export default function SearchPage() {
     description: p.description ?? '',
     slug: p.slug,
     date: p.date ?? '',
-    tags: p.tags ?? [],
+    // 有些 Post 类型可能没有 tags 字段，使用 any 断言以避免 TS 错误
+    tags: (p as any).tags ?? [],
   }))
 
   return (
