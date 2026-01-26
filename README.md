@@ -1,6 +1,6 @@
 ![WSL logo](/WSLpress.svg)
 
-# WSLpress (WSLpress) 威慑力·轻翼部落格：基于 Next.js、Contentlayer 和 Tailwind 的现代博客模板
+# WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客模板
 
 # WSLpress 🚀
 
@@ -261,7 +261,7 @@ module.exports = {
 
 - GitHub Issues：[提交问题](https://github.com/che-ui/wslpress/issues)
 
-- 开发者：che-ui（GitHub 仓库维护者）
+- 开发者：che-ui（中国初中生，GitHub 仓库维护者）
 
 ---
 
