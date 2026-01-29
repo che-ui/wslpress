@@ -1,3 +1,9 @@
+/* 在你的 layout.tsx 的 head 部分加上这行（示例片段） */
+<head>
+  {/* 其他 meta / link */}
+  <link rel="alternate" type="application/rss+xml" title="WSLpress RSS" href="/rss.xml" />
+</head>
+
 import Link from "next/link"
 import "./globals.css"
 import { Inter } from "next/font/google"
