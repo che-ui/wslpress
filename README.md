@@ -2,7 +2,7 @@
 
 # WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客模板
 
-# WSLpress 🚀
+# WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
 轻量高效的现代博客模板，基于 Next.js 13 + Contentlayer + Tailwind CSS 构建
 
