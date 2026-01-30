@@ -31,10 +31,10 @@ export default function Home() {
 
         <div className="mt-12 text-center">
           <Link
-            href="/posts"
+            href="/admin"
             className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-slate-900 text-white hover:bg-slate-700 transition"
           >
-            查看所有文章
+            ✏️ 编辑
           </Link>
         </div>
       </div>
