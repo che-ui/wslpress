@@ -1,0 +1,38 @@
+# Decap (Netlify) CMS configuration for che-ui/wslpress
+backend:
+  name: git-gateway        # 使用 Netlify Identity + Git Gateway（推荐）
+  branch: main             # 将 CMS 提交到的分支，若不是 main 请改为你的分支名
+
+media_folder: "public/uploads"   # 仓库里保存上传文件的位置（相对仓库根目录）
+public_folder: "/uploads"        # 站点中访问这些文件的 URL 前缀
+
+# 可开启 editorial workflow（可选）
+# publish_mode: editorial_workflow
+
+site_url: ""  # 可留空
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    extension: "mdx"            # 让文件以 .mdx 后缀保存
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { name: "title", label: "Title", widget: "string", required: true }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "date", label: "Publish Date", widget: "datetime", default: "now" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    extension: "mdx"
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { name: "title", label: "Title", widget: "string", required: true }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "body", label: "Body", widget: "markdown" }
