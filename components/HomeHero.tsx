@@ -18,10 +18,10 @@ export default function HomeHero() {
 
             <div className="mt-8 flex gap-3">
               <Link
-                href="/about"
+                href="/rss.xml"
                 className="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur"
               >
-                了解我们
+                订阅RSS
               </Link>
               <Link
                 href="/search"
