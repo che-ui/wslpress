@@ -267,7 +267,7 @@ module.exports = {
 
 - GitHub Issues：[提交问题](https://github.com/che-ui/wslpress/issues)
 
-- 表单提交：
+- 官方反馈平台提交（推荐）：🌐 [点此进入](https://wslpress.taiwan.mrche.top/feedback.html)
 
 - 开发者：che-ui（中国初中生，GitHub 仓库维护者）
 
