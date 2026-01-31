@@ -28,13 +28,12 @@ WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博�
 
 - **开发体验优化**：ESLint 配置、TypeScript 类型校验、Tailwind 工具类快速开发
 
-- **一键部署**：无缝适配 Vercel、Netlify 等平台，部署流程简单高效
+- **一键部署**：无缝适配 Cloudflare Pages、Vercel、Netlify 等平台，部署流程简单高效
 
 - **RSS**：支持RSS订阅 (/rss.xml)
 
 - **全局搜索**：支持全文快速检索
 
-- **兼容性强**：Cloudflare Pages，Vercel，Netlify均可部署
 ---
 
 ## 🚀 快速开始
@@ -267,6 +266,8 @@ module.exports = {
 如果有任何问题或建议，欢迎通过以下方式联系：
 
 - GitHub Issues：[提交问题](https://github.com/che-ui/wslpress/issues)
+
+- 表单提交：
 
 - 开发者：che-ui（中国初中生，GitHub 仓库维护者）
 
