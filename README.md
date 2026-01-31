@@ -6,6 +6,8 @@
 
 轻量高效的现代博客模板，基于 Next.js 13 + Contentlayer + Tailwind CSS 构建
 
+如果您需要快速插入图片，可使用我们为您提供的工具🌐 [WSLpress-图片压缩转Markdown Base64工具](https://wslpress-base64-image-tool.taiwan.mrche.top)
+
 WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博客模板，融合了前沿的前端技术栈与优雅的视觉设计，支持暗色模式、响应式布局和可视化内容管理，让你无需关注复杂配置，专注于内容创作。
 
 由 **Wingsly** & **TWINGS CORPORATION** 开发 | 🌐 [在线演示](https://wslpress.taiwan.mrche.top)
@@ -32,6 +34,7 @@ WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博�
 
 - **全局搜索**：支持全文快速检索
 
+- **兼容性强**：Cloudflare Pages，Vercel，Netlify均可部署
 ---
 
 ## 🚀 快速开始
