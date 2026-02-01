@@ -1,1 +1,110 @@
-<iframe width="640px" height="480px" src="https://forms.office.com/r/jR890qXNYV?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 适配移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>意见反馈</title>
+    <style>
+        /* 基础样式重置，避免默认样式干扰 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面整体布局：居中、留白、柔和背景 */
+        body {
+            min-height: 100vh;
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 反馈表单标题 */
+        .feedback-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* 表单容器：圆角、阴影、适配宽高 */
+        .feedback-container {
+            width: 100%;
+            max-width: 700px; /* 适度放宽，提升视觉舒适度 */
+            border-radius: 12px; /* 圆角更柔和 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 轻阴影提升层次感 */
+            overflow: hidden; /* 防止iframe溢出圆角 */
+            background-color: #fff;
+        }
+
+        /* 优化iframe样式：自适应容器 */
+        .feedback-iframe {
+            width: 100%;
+            height: 80vh; /* 高度适配视口，避免固定值导致移动端溢出 */
+            max-height: 600px; /* 限制最大高度，适配大屏 */
+            border: none;
+            display: block; /* 消除默认空隙 */
+        }
+
+        /* 加载提示样式 */
+        .loading-tip {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 移动端适配：调整间距和字体 */
+        @media (max-width: 768px) {
+            .feedback-title {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            .feedback-container {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+            .feedback-iframe {
+                height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 标题提升页面辨识度 -->
+    <h1 class="feedback-title">欢迎提交您的意见反馈</h1>
+    
+    <!-- 容器包裹iframe，优化视觉层次 -->
+    <div class="feedback-container">
+        <!-- 加载提示（提升用户等待体验） -->
+        <div class="loading-tip">表单加载中，请稍候...</div>
+        <iframe 
+            class="feedback-iframe"
+            src="https://forms.office.com/r/jR890qXNYV?embed=true"
+            frameborder="0"
+            marginwidth="0"
+            marginheight="0"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            msallowfullscreen
+        ></iframe>
+    </div>
+
+    <script>
+        // 隐藏加载提示：iframe加载完成后移除提示
+        document.querySelector('.feedback-iframe').onload = function() {
+            document.querySelector('.loading-tip').style.display = 'none';
+        };
+    </script>
+</body>
+</html>
