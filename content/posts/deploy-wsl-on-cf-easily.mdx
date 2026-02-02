@@ -1,0 +1,217 @@
+---
+title: 🚀 保姆级教程：从零部署 WSLpress 博客到 Cloudflare Pages（本地构建 + 拖拽上传）
+description: 如何在cf pages上快速部署你的wslpress博客
+date: "2026-02-02"
+---
+
+> **项目地址**：[https://github.com/che-ui/wslpress](https://github.com/che-ui/wslpress)  
+> **适合人群**：想快速搭建一个现代化、免费、全球加速的个人博客，且**不想连接 GitHub**，只想“本地写好 → 构建 → 拖拽上传”  
+> **技术栈**：Next.js 13 + Contentlayer + Tailwind CSS  
+> **部署方式**：Cloudflare Pages 静态托管（纯 HTML/CSS/JS）
+
+---
+
+## 🔍 重要前提说明
+
+Cloudflare Pages 的 **“拖拽上传”模式（Upload from your computer）仅支持静态网站**。  
+而 WSLpress 默认是 Next.js 动态应用，**必须先配置为静态导出（Static Export）**，才能生成可直接托管的 HTML 文件。
+
+本教程将一步步教你：
+1. 修改 WSLpress 支持静态导出  
+2. 在本地构建出完整的 `out/` 静态文件夹  
+3. 将该文件夹拖拽上传至 Cloudflare Pages 完成部署  
+
+---
+
+## ✅ 第一步：准备工作
+
+### 1. 安装必要工具
+- **Git**（用于下载项目）
+- **Node.js 18+**（推荐使用 [nvm](https://github.com/nvm-sh/nvm)）
+- **pnpm**（WSLpress 推荐包管理器）
+
+```bash
+# 安装 pnpm（如未安装）
+npm install -g pnpm
+```
+
+### 2. 克隆 WSLpress 项目
+```bash
+git clone https://github.com/che-ui/wslpress.git
+cd wslpress
+```
+
+### 3. 安装依赖
+```bash
+pnpm install
+```
+
+---
+
+## ⚙️ 第二步：配置 WSLpress 支持静态导出
+
+> ⚠️ 这是关键步骤！否则无法生成纯静态文件。
+
+### 1. 编辑 `next.config.js`
+
+在项目根目录找到 `next.config.js`，修改为：
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',     // 👈 启用静态导出
+  distDir: 'out',       // 👈 构建产物输出到 out/ 目录
+  trailingSlash: true,  // 可选：确保路径以 / 结尾，避免 404
+};
+
+export default nextConfig;
+```
+
+### 2. 确保动态路由能被预渲染（通常已内置）
+
+WSLpress 使用 Contentlayer 管理内容，默认已包含 `generateStaticParams`，可自动为每篇文章生成静态页面。  
+你无需额外修改，但建议检查 `app/blog/[slug]/page.tsx` 是否包含类似逻辑：
+
+```tsx
+// app/blog/[slug]/page.tsx
+import { allBlogs } from 'contentlayer/generated';
+
+export async function generateStaticParams() {
+  return allBlogs.map((blog) => ({
+    slug: blog._raw.flattenedPath,
+  }));
+}
+```
+
+✅ 如果存在，说明所有文章都会在构建时生成 HTML，支持静态部署。
+
+---
+
+## 🏗️ 第三步：本地构建静态站点
+
+在项目根目录运行：
+
+```bash
+pnpm build
+```
+
+构建成功后，你会看到一个名为 **`out/`** 的文件夹，结构如下：
+
+```
+out/
+├── index.html
+├── about.html
+├── blog/
+│   ├── my-first-post/
+│   │   └── index.html
+│   └── ...
+├── _next/
+│   ├── static/
+│   └── ...
+└── favicon.ico
+```
+
+> ✅ 这就是你的完整静态博客！所有页面都是 `.html` 文件，可直接被任何静态托管服务部署。
+
+---
+
+## ☁️ 第四步：注册并登录 Cloudflare
+
+1. 访问 [https://dash.cloudflare.com](https://dash.cloudflare.com)
+2. 注册或登录账号（支持邮箱、Google、GitHub 登录）
+3. 进入控制台后，点击左侧 **“Workers & Pages”**
+
+---
+
+## 📤 第五步：拖拽上传 `out/` 文件夹到 Cloudflare Pages
+
+### 1. 创建新 Pages 项目
+- 点击 **“Create application”**
+- 选择 **“Pages”**
+- 选择 **“Upload from your computer”**
+
+### 2. 上传构建产物
+- 打开文件管理器
+- 找到你本地的 `wslpress/out/` 文件夹
+- **将整个 `out/` 文件夹拖入浏览器上传区域**
+
+> ❌ 不要上传整个 `wslpress` 项目！只传 `out/`！
+
+### 3. 配置部署设置
+
+| 配置项 | 值 |
+|--------|-----|
+| **Project name** | 例如 `my-wslpress-blog` |
+| **Build command** | **留空**（我们已本地构建） |
+| **Build output directory** | **留空** 或 `/` |
+| **Root directory** | **留空** |
+
+> 💡 因为上传的是纯静态文件，Cloudflare 不需要再执行构建。
+
+### 4. 点击 “Deploy site”
+
+等待 10~30 秒，部署完成！你会看到类似这样的 URL：
+
+```
+https://my-wslpress-blog.yourname.pages.dev
+```
+
+✅ 打开它，你的博客已经上线！
+
+---
+
+## 🔎 第六步：验证与调试
+
+### 常见问题排查：
+
+| 问题 | 解决方法 |
+|------|--------|
+| 打开页面是空白或 404 | 检查是否上传了 `out/` 而不是整个项目 |
+| 文章页打不开 | 确认 `generateStaticParams` 是否覆盖所有文章路径 |
+| 图片不显示 | 确保图片放在 `public/` 目录，引用路径为 `/images/xxx.jpg` |
+| 样式错乱 | 检查 `_next/static/` 是否完整上传（不要手动删减） |
+
+### 本地预览构建结果（可选）：
+```bash
+npx serve -s out
+```
+访问 `http://localhost:3000` 查看静态版本效果。
+
+---
+
+## 🔄 如何更新博客内容？
+
+1. 在 `content/` 目录下新增或编辑 `.md` 文件
+2. 重新运行 `pnpm build` 生成新的 `out/` 文件夹
+3. 重复 **第五步**：拖拽新 `out/` 到 Cloudflare Pages（会覆盖旧版本）
+
+> 💡 小技巧：可将 `out/` 命名为带日期的文件夹（如 `out-20260202`），方便回滚。
+
+---
+
+## 🌐 （可选）绑定自定义域名
+
+1. 在 Cloudflare Pages 项目页面点击 **“Custom domains”**
+2. 输入你的域名（如 `blog.example.com`）
+3. 按提示添加 CNAME 记录（若域名已在 Cloudflare 管理，则自动生效）
+
+---
+
+## 🎁 结语
+
+通过本教程，你已成功将 WSLpress 博客以**纯静态方式**部署到 Cloudflare Pages，享受：
+- 免费托管
+- 全球 CDN 加速
+- HTTPS 自动启用
+- 无需服务器运维
+
+> 🌟 **在线演示**：[https://wslpress.taiwan.mrche.top](https://wslpress.taiwan.mrche.top)  
+> ⭐ **支持开源**：[GitHub - che-ui/wslpress](https://github.com/che-ui/wslpress)
+
+---
+
+**作者**：che-ui  
+**最后更新**：2026 年 2 月  
+**许可证**：CC BY-SA 4.0（欢迎转载，注明出处即可）
+
+> ✨ 写作不易，如果对你有帮助，不妨点个 Star 或分享给朋友！
