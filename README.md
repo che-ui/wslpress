@@ -153,7 +153,7 @@ wslpress/
 
 ---
 
-## 🌐 部署指南
+## 🌐 快速部署指南（先fork完本仓库）
 
 ### 方案 1：部署到 Vercel（推荐）
 
@@ -164,6 +164,8 @@ wslpress/
 3. 无需额外配置，Vercel 会自动识别 Next.js 项目
 
 4. 点击 "Deploy"，等待部署完成即可获得在线地址
+
+5. 绑定域名（可选），但国内用户无法访问 `.vercel.app` ，请知晓
 
 ### 方案 2：部署到 Netlify
 
@@ -181,6 +183,21 @@ wslpress/
 
 5. 点击 "Deploy site" 完成部署
 
+6. 得到一个 `.netlify.app` 三级域名，截止2026.2.3国内均可正常访问，但使用中国移动蜂窝网络访问可能会不稳定，请知晓。
+
+### 方案 3：部署到 Cloudflare Pages（不是Worker！）
+# 路径1：直接连接到gh仓库
+1. 访问 [Cloudflare Dashboard](https://dash.cloudflare.com/) 并登录
+
+2. 点击 "计算和AI" → "Workers和Pages"，点击右上角“创建应用程序”，跳转后在下方“想要部署 Pages？开始使用”点击“开始使用”
+
+3. 导入 `wslpress` 仓库
+
+4. 构建配置（选择Next.js）：
+
+5. 点击 "Deploy site" 完成部署
+
+6. 得到一个 `.pages.dev` 三级域名，已被封。但可以绑定自定义域名
 ---
 
 ## 🛠️ 配置说明
