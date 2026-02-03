@@ -185,8 +185,7 @@ wslpress/
 
 6. 得到一个 `.netlify.app` 三级域名，截止2026.2.3国内均可正常访问，但使用中国移动蜂窝网络访问可能会不稳定，请知晓。
 
-### 方案 3：部署到 Cloudflare Pages（不是Worker！）
-
+### 方案 3：正常方法部署到 Cloudflare Pages（不是Worker！）
 
 1. 访问 [Cloudflare Dashboard](https://dash.cloudflare.com/) 并登录
 
@@ -200,9 +199,12 @@ wslpress/
 
 6. 得到一个 `.pages.dev` 三级域名，已被封。但可以绑定自定义域名
 
-** 路径①：直接上传资产（assets） **
+7. 然后按教程去做https://wslpress.taiwan.mrche.top/posts/deploying-wsl-on-cfpages
 
-参考教程： [🚀 保姆级教程：从零部署 WSLpress 博客到 Cloudflare Pages（本地构建 + 拖拽上传）](https://wslpress.taiwan.mrche.top/posts/deploy-wsl-on-cf-easily)
+### 方案 4：通过直接上传资产部署到 Cloudflare Pages（建议不会科学上网的小白使用）
+
+参考教程：[🚀 保姆级教程：从零部署 WSLpress 博客到 Cloudflare Pages（本地构建 + 拖拽上传）](https://wslpress.taiwan.mrche.top/posts/deploy-wsl-on-cf-easily)
+
 ---
 
 ## 🛠️ 配置说明
