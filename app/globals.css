@@ -1,289 +1,202 @@
-/* 保留原有 Tailwind 核心指令 */
+/* wslpress 全局样式 - 匹配 GitHub 原生 UI（修复夜间模式标题颜色） */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ========== 基础变量：GitHub 原生 UI + Tailwind 兼容 ========== */
+/* ========== 1. 核心变量定义（浅色/深色模式） ========== */
 :root {
-  /* GitHub 原生颜色系统（兼容 Tailwind 暗色模式） */
+  /* GitHub 浅色模式原生变量 */
   --color-text-primary: #1f2328;
   --color-text-secondary: #656d76;
-  --color-text-tertiary: #9198a1;
   --color-text-link: #0969da;
   --color-text-link-hover: #0655ba;
-  --color-text-link-active: #054898;
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f6f8fa;
   --color-bg-tertiary: #f0f2f5;
-  --color-bg-hover: #f9fafb;
   --color-border-primary: #d0d7de;
   --color-border-secondary: #e9eef2;
-  --color-border-tertiary: #f3f4f6;
-  --color-accent-primary: #0969da;
-  --color-accent-secondary: #2da44e;
-  --color-accent-danger: #cf222e;
-  --color-accent-muted: #8c959f;
-  --color-shadow-sm: rgba(140, 149, 159, 0.1);
-  --color-shadow-md: rgba(140, 149, 159, 0.2);
-
-  /* GitHub 原生排版系统 */
   --font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-md: 1.125rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-loose: 1.75;
-
-  /* GitHub 间距/圆角/过渡系统 */
-  --spacing-0: 0px;
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 16px;
-  --spacing-4: 24px;
-  --spacing-5: 32px;
-  --spacing-6: 40px;
-  --spacing-7: 48px;
-  --border-radius-sm: 3px;
   --border-radius-md: 6px;
-  --border-radius-lg: 12px;
-  --border-radius-full: 9999px;
-  --box-shadow-sm: 0 1px 2px var(--color-shadow-sm);
-  --box-shadow-md: 0 3px 6px var(--color-shadow-md);
   --transition-default: 0.2s ease-in-out;
-  --transition-fast: 0.1s ease-in-out;
 }
 
-/* 深色模式：匹配 GitHub 原生 + 兼容 Tailwind dark: 前缀 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text-primary: #e6edf3;
-    --color-text-secondary: #8b949e;
-    --color-text-tertiary: #484f58;
-    --color-text-link: #58a6ff;
-    --color-text-link-hover: #3b82f6;
-    --color-text-link-active: #2563eb;
-    --color-bg-primary: #0d1117;
-    --color-bg-secondary: #161b22;
-    --color-bg-tertiary: #21262d;
-    --color-bg-hover: #2a2f36;
-    --color-border-primary: #30363d;
-    --color-border-secondary: #21262d;
-    --color-border-tertiary: #2d333b;
-    --color-shadow-sm: rgba(0, 0, 0, 0.3);
-    --color-shadow-md: rgba(0, 0, 0, 0.5);
-  }
+/* 关键：绑定 html.dark 确保夜间模式变量生效（覆盖框架默认样式） */
+html.dark {
+  /* GitHub 深色模式原生变量 */
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-link: #58a6ff;
+  --color-text-link-hover: #3b82f6;
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-tertiary: #21262d;
+  --color-border-primary: #30363d;
+  --color-border-secondary: #21262d;
 }
 
-/* ========== 整合原有样式 + GitHub 基础样式（Tailwind @layer 规范） ========== */
+/* ========== 2. 基础样式（Next.js + Tailwind 规范） ========== */
 @layer base {
-  /* 基础重置：修复盒模型/滚动/点击高亮 BUG */
   * {
     @apply m-0 p-0 box-border;
     -webkit-tap-highlight-color: transparent;
   }
 
   html {
-    @apply text-base leading-normal scroll-smooth;
+    @apply scroll-smooth;
     -webkit-overflow-scrolling: touch;
-    font-size: 16px;
   }
 
   body {
     @apply font-sans text-[--color-text-primary] bg-[--color-bg-primary] min-h-screen overflow-x-hidden;
-    -webkit-font-smoothing: antialiased;
     font-family: var(--font-family-primary);
-    line-height: var(--line-height-normal);
   }
 
-  /* 核心排版：GitHub 原生 + Tailwind 兼容 */
+  /* 基础排版（强制继承变量，修复标题黑色问题） */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold leading-[--line-height-tight] text-[--color-text-primary] mb-[--spacing-2] break-words;
+    @apply font-semibold text-[--color-text-primary] !important; /* 提升优先级 */
+    word-wrap: break-word;
   }
-  h1 { @apply text-[--font-size-xl] mt-[--spacing-6]; }
-  h2 { 
-    @apply text-[--font-size-lg] mt-[--spacing-5] pb-[--spacing-1] border-b border-[--color-border-primary] w-full block; 
-  }
-  h3 { @apply text-[--font-size-md] mt-[--spacing-4]; }
+  h1 { @apply text-2xl mt-10 mb-2; }
+  h2 { @apply text-xl mt-8 mb-2 pb-1 border-b border-[--color-border-primary] w-full; }
+  h3 { @apply text-lg mt-6 mb-2; }
   h4 { @apply text-base; }
-  h5 { @apply text-[--font-size-sm]; }
-  h6 { @apply text-[--font-size-xs] text-[--color-text-secondary]; }
+  h5 { @apply text-sm; }
+  h6 { @apply text-xs text-[--color-text-secondary] !important; }
 
-  p { 
-    @apply mb-[--spacing-3] leading-[--line-height-loose] break-words; 
+  p {
+    @apply mb-4 leading-relaxed text-[--color-text-primary] !important;
+    word-wrap: break-word;
   }
 
-  a { 
+  /* 链接样式（保留原有微调 + 适配深色模式） */
+  a {
     @apply text-[--color-text-link] no-underline transition-colors duration-[--transition-default] inline-block;
   }
-  a:hover { @apply text-[--color-text-link-hover] underline; }
-  a:active { @apply text-[--color-text-link-active]; }
+  a:hover {
+    @apply text-[--color-text-link-hover] underline;
+  }
 
-  strong { @apply font-semibold; }
-  em { @apply italic; }
+  /* 原有 prose 链接样式保留 */
+  .prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    @apply text-[--color-text-link] !important;
+  }
 
-  /* 代码样式：GitHub 原生 + 修复滚动/模糊 BUG */
+  /* 代码样式（GitHub 原生） */
   code, pre {
-    @apply font-mono text-[--font-size-sm];
+    @apply font-mono text-sm;
     font-smooth: never;
     -webkit-font-smoothing: none;
   }
   code {
-    @apply px-[0.2em] py-[0.4em] m-0 bg-[--color-bg-secondary] rounded-[--border-radius-sm] text-[--color-text-primary] break-words;
+    @apply px-1 py-0.5 bg-[--color-bg-secondary] rounded-sm text-[--color-text-primary] !important;
+    word-break: break-word;
   }
   pre {
-    @apply p-[--spacing-3] bg-[--color-bg-secondary] rounded-[--border-radius-md] overflow-auto leading-normal mb-[--spacing-3] border border-[--color-border-secondary] scrollbar-thin;
-  }
-  pre::-webkit-scrollbar {
-    @apply w-2 h-2;
-  }
-  pre::-webkit-scrollbar-thumb {
-    @apply bg-[--color-border-primary] rounded-full;
-  }
-  pre::-webkit-scrollbar-track {
-    @apply bg-[--color-bg-tertiary] rounded-full;
+    @apply p-4 bg-[--color-bg-secondary] rounded-md overflow-auto mb-4 border border-[--color-border-secondary] text-[--color-text-primary] !important;
   }
   pre code {
-    @apply p-0 bg-transparent rounded-none break-normal;
+    @apply p-0 bg-transparent rounded-none;
   }
 
-  /* 列表/引用/表格：修复缩进/溢出 BUG */
+  /* 列表/引用/表格 */
   ul, ol {
-    @apply mb-[--spacing-3] pl-[--spacing-4] list-outside;
+    @apply mb-4 pl-6 list-outside;
   }
   li {
-    @apply mb-[--spacing-1] break-words;
-  }
-  li > ul, li > ol {
-    @apply mt-[--spacing-1] mb-0;
+    @apply mb-1 text-[--color-text-primary] !important;
   }
 
   blockquote {
-    @apply m-0 mb-[--spacing-3] pl-[--spacing-3] border-l-4 border-[--color-border-primary] text-[--color-text-secondary] leading-[--line-height-loose] break-words;
+    @apply m-0 mb-4 pl-4 border-l-4 border-[--color-border-primary] text-[--color-text-secondary] !important;
   }
 
   table {
-    @apply w-full mb-[--spacing-3] border-collapse border-spacing-0 overflow-auto block;
+    @apply w-full mb-4 border-collapse overflow-auto block;
   }
   th, td {
-    @apply p-[--spacing-2] px-[--spacing-3] border border-[--color-border-primary] break-words;
+    @apply p-2 px-3 border border-[--color-border-primary] text-[--color-text-primary] !important;
   }
   th {
-    @apply font-semibold bg-[--color-bg-secondary] text-left whitespace-nowrap;
+    @apply font-semibold bg-[--color-bg-secondary] text-left;
   }
 }
 
+/* ========== 3. 组件样式（博客核心 + GitHub 原生） ========== */
 @layer components {
-  /* 保留你原有微调样式 */
-  .prose a {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  /* 保留你原有玻璃背景样式（适配 GitHub 暗色模式） */
+  /* 原有玻璃背景样式（适配深色模式） */
   .bg-frost {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
     backdrop-filter: blur(6px);
-    /* 适配 GitHub 深色模式玻璃效果 */
     @apply dark:bg-gradient-to-b dark:from-[rgba(255,255,255,0.03)] dark:to-[rgba(255,255,255,0.01)];
   }
 
-  /* 通用组件：GitHub 原生 + Tailwind 工具类兼容 */
+  /* 按钮组件 */
   .btn {
-    @apply inline-block px-4 py-[5px] text-[--font-size-sm] font-medium leading-5 whitespace-nowrap cursor-pointer select-none border border-[--color-border-primary] rounded-[--border-radius-md] bg-[--color-bg-secondary] text-[--color-text-primary] transition-all duration-[--transition-default] outline-none relative;
+    @apply inline-block px-4 py-1.5 text-sm font-medium rounded-[--border-radius-md] border border-[--color-border-primary] bg-[--color-bg-secondary] text-[--color-text-primary] cursor-pointer transition-all duration-[--transition-default] outline-none;
   }
   .btn:hover {
-    @apply no-underline bg-[--color-bg-hover] border-[--color-border-primary];
-  }
-  .btn:active {
-    @apply bg-[--color-bg-tertiary] translate-y-px;
-  }
-  .btn:focus-visible {
-    @apply shadow-[0_0_0_3px_rgba(9,105,218,0.3)];
+    @apply bg-[--color-bg-tertiary] no-underline;
   }
   .btn-primary {
-    @apply bg-[--color-accent-primary] border-[--color-border-primary] text-white;
+    @apply bg-[--color-text-link] text-white border-[--color-border-primary] !important;
   }
   .btn-primary:hover {
-    @apply bg-[--color-text-link-hover] text-white;
-  }
-  .btn-primary:active {
-    @apply bg-[--color-text-link-active] text-white;
+    @apply bg-[--color-text-link-hover] text-white !important;
   }
 
-  .input, textarea {
-    @apply block w-full px-3 py-[5px] text-[--font-size-sm] leading-5 text-[--color-text-primary] bg-[--color-bg-primary] border border-[--color-border-primary] rounded-[--border-radius-md] outline-none shadow-[inset_0_1px_2px_var(--color-shadow-sm)] transition-all duration-[--transition-default] break-words resize-none;
-  }
-  .input:focus, textarea:focus {
-    @apply border-[--color-accent-primary] shadow-[0_0_0_3px_rgba(9,105,218,0.3)];
-  }
-  .input:disabled, textarea:disabled {
-    @apply bg-[--color-bg-tertiary] text-[--color-text-tertiary] cursor-not-allowed;
-  }
-  textarea {
-    @apply min-h-[100px] resize-y overflow-y-auto;
-  }
-
-  /* 博客核心模块：GitHub 原生 UI + Tailwind 兼容 */
-  /* 导航栏 */
-  .navbar {
-    @apply w-full bg-[--color-bg-primary] border-b border-[--color-border-primary] py-[--spacing-2] px-[--spacing-4] sticky top-0 z-100 flex items-center justify-between flex-wrap;
-  }
-  .navbar-logo {
-    @apply flex items-center gap-[--spacing-2] text-[--color-text-primary] font-semibold text-[--font-size-md];
-  }
-  .navbar-logo:hover {
-    @apply no-underline text-[--color-text-link];
-  }
-  .navbar-menu {
-    @apply flex gap-[--spacing-3] flex-wrap;
-  }
-  .navbar-item {
-    @apply text-[--color-text-primary] text-[--font-size-sm] font-medium py-[--spacing-1] px-[--spacing-2] rounded-[--border-radius-sm] leading-5;
-  }
-  .navbar-item:hover {
-    @apply bg-[--color-bg-hover] text-[--color-text-link] no-underline;
-  }
-  .navbar-item.active {
-    @apply text-[--color-text-link] font-semibold;
-  }
-
-  /* 文章卡片 */
+  /* 文章卡片（核心修复：标题颜色强制绑定变量） */
   .article-card {
-    @apply bg-[--color-bg-primary] border border-[--color-border-primary] rounded-[--border-radius-md] shadow-[--box-shadow-sm] p-[--spacing-3] mb-[--spacing-3] transition-shadow duration-[--transition-default] transition-transform duration-[--transition-fast];
-  }
-  .article-card:hover {
-    @apply shadow-[--box-shadow-md] -translate-y-0.5;
+    @apply bg-[--color-bg-primary] border border-[--color-border-primary] rounded-md shadow-sm p-4 mb-4 transition-shadow hover:shadow-md hover:-translate-y-1;
   }
   .article-card-title {
-    @apply text-[--font-size-lg] font-semibold mb-[--spacing-1] text-[--color-text-link];
+    @apply text-lg font-semibold mb-2 text-[--color-text-link] !important; /* 强制生效，修复夜间黑色 */
+    text-decoration: none;
   }
   .article-card-title:hover {
-    @apply underline;
+    @apply text-[--color-text-link-hover] underline !important;
   }
   .article-card-meta {
-    @apply text-[--font-size-xs] text-[--color-text-secondary] mb-[--spacing-2] flex gap-[--spacing-3];
+    @apply text-xs text-[--color-text-secondary] mb-2 flex gap-3 !important;
   }
   .article-card-excerpt {
-    @apply text-[--color-text-primary] leading-[--line-height-loose] mb-[--spacing-2] line-clamp-3;
+    @apply text-[--color-text-primary] leading-relaxed mb-2 line-clamp-3 !important;
   }
   .article-card-tag {
-    @apply inline-block px-2 py-0.5 text-[--font-size-xs] text-[--color-text-secondary] bg-[--color-bg-secondary] rounded-full mr-[--spacing-1];
+    @apply inline-block px-2 py-0.5 text-xs text-[--color-text-secondary] bg-[--color-bg-secondary] rounded-full mr-1 !important;
+  }
+
+  /* 导航栏 */
+  .navbar {
+    @apply w-full bg-[--color-bg-primary] border-b border-[--color-border-primary] py-2 px-4 sticky top-0 z-10 flex items-center justify-between flex-wrap;
+  }
+  .navbar-logo {
+    @apply flex items-center gap-2 text-[--color-text-primary] font-semibold text-lg !important;
+  }
+  .navbar-logo:hover {
+    @apply text-[--color-text-link] no-underline !important;
+  }
+  .navbar-menu {
+    @apply flex gap-3 flex-wrap;
+  }
+  .navbar-item {
+    @apply text-[--color-text-primary] text-sm font-medium py-1 px-2 rounded-sm leading-5 hover:bg-[--color-bg-tertiary] hover:text-[--color-text-link] !important;
+  }
+  .navbar-item.active {
+    @apply text-[--color-text-link] font-semibold !important;
   }
 
   /* 评论区 */
   .comment-container {
-    @apply mt-[--spacing-5] border-t border-[--color-border-primary] pt-[--spacing-4];
+    @apply mt-10 border-t border-[--color-border-primary] pt-4;
   }
   .comment-header {
-    @apply text-[--font-size-md] font-semibold mb-[--spacing-3];
+    @apply text-lg font-semibold mb-4 text-[--color-text-primary] !important;
   }
   .comment-item {
-    @apply flex gap-[--spacing-3] mb-[--spacing-4] flex-wrap;
+    @apply flex gap-4 mb-6 flex-wrap;
   }
   .comment-avatar {
     @apply w-10 h-10 rounded-full bg-[--color-bg-secondary] object-cover flex-shrink-0;
@@ -292,46 +205,43 @@
     @apply flex-1 min-w-[280px];
   }
   .comment-author {
-    @apply font-semibold text-[--color-text-primary] mb-[--spacing-1] flex items-center gap-[--spacing-1];
+    @apply font-semibold text-[--color-text-primary] mb-1 flex items-center gap-1 !important;
   }
   .comment-time {
-    @apply text-[--font-size-xs] text-[--color-text-secondary] font-normal;
+    @apply text-xs text-[--color-text-secondary] font-normal !important;
   }
   .comment-body {
-    @apply text-[--color-text-primary] leading-[--line-height-loose] mb-[--spacing-2] break-words;
+    @apply text-[--color-text-primary] leading-relaxed mb-2 !important;
   }
   .comment-actions {
-    @apply flex gap-[--spacing-3] text-[--font-size-xs];
+    @apply flex gap-3 text-xs;
   }
   .comment-action {
-    @apply text-[--color-text-secondary];
-  }
-  .comment-action:hover {
-    @apply text-[--color-text-link] no-underline;
+    @apply text-[--color-text-secondary] hover:text-[--color-text-link] no-underline !important;
   }
 
   /* 页脚 */
   .footer {
-    @apply w-full border-t border-[--color-border-primary] py-[--spacing-4] px-[--spacing-4] mt-[--spacing-6] bg-[--color-bg-primary];
+    @apply w-full border-t border-[--color-border-primary] py-4 px-4 mt-10 bg-[--color-bg-primary];
   }
   .footer-content {
-    @apply max-w-[1280px] mx-auto flex justify-between flex-wrap gap-[--spacing-4] w-full;
+    @apply max-w-[1280px] mx-auto flex justify-between flex-wrap gap-4 w-full;
   }
   .footer-links {
-    @apply flex gap-[--spacing-3] text-[--font-size-xs];
+    @apply flex gap-3 text-xs;
   }
   .footer-copyright {
-    @apply text-[--font-size-xs] text-[--color-text-secondary];
+    @apply text-xs text-[--color-text-secondary] !important;
   }
 
   /* 通用容器 */
   .container {
-    @apply max-w-[1280px] mx-auto px-[--spacing-3] w-full;
+    @apply max-w-[1280px] mx-auto px-4 w-full;
   }
 }
 
+/* ========== 4. 工具类补充 ========== */
 @layer utilities {
-  /* 自定义工具类：GitHub 原生 + Tailwind 补充 */
   .scrollbar-thin {
     scrollbar-width: thin;
   }
@@ -341,31 +251,28 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .text-underline-offset-3 {
-    text-underline-offset: 3px;
-  }
 }
 
-/* ========== 响应式适配：修复移动端 BUG + Tailwind 兼容 ========== */
-@media (max-width: 767px) {
+/* ========== 5. 响应式适配 ========== */
+@media (max-width: 768px) {
   .d-sm-none { @apply hidden !important; }
   .d-sm-block { @apply block !important; }
-  
-  body { @apply px-[--spacing-2]; }
-  .card, .article-card { @apply p-[--spacing-2]; }
-  pre { @apply p-[--spacing-2]; }
-  
-  /* 导航栏移动端适配 */
+
+  body { @apply px-2; }
+  .article-card { @apply p-3; }
+  pre { @apply p-3; }
+
+  /* 导航栏移动端 */
   .navbar {
-    @apply px-[--spacing-2] gap-[--spacing-2];
+    @apply px-2 gap-2;
   }
   .navbar-menu {
-    @apply w-full mt-[--spacing-2] gap-[--spacing-1];
+    @apply w-full mt-2 gap-1;
   }
-  
-  /* 评论区移动端适配 */
+
+  /* 评论区移动端 */
   .comment-item {
-    @apply flex-col gap-[--spacing-2];
+    @apply flex-col gap-2;
   }
   .comment-avatar {
     @apply w-8 h-8;
@@ -373,17 +280,17 @@
   .comment-content {
     @apply min-w-full;
   }
-  
-  /* 页脚移动端适配 */
+
+  /* 页脚移动端 */
   .footer-content {
-    @apply flex-col gap-[--spacing-2];
+    @apply flex-col gap-2;
   }
   .footer-links {
     @apply flex-wrap;
   }
 }
 
-/* 4K 大屏适配 */
+/* 4K大屏适配 */
 @media (min-width: 1920px) {
   .container {
     @apply max-w-[1600px];
