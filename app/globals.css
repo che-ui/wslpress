@@ -1,17 +1,394 @@
+/* 保留原有 Tailwind 核心指令 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 微调 — 让卡片在暗色模式下更舒服一些 */
+/* ========== 基础变量：GitHub 原生 UI + Tailwind 兼容 ========== */
+:root {
+  /* GitHub 原生颜色系统（兼容 Tailwind 暗色模式） */
+  --color-text-primary: #1f2328;
+  --color-text-secondary: #656d76;
+  --color-text-tertiary: #9198a1;
+  --color-text-link: #0969da;
+  --color-text-link-hover: #0655ba;
+  --color-text-link-active: #054898;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-tertiary: #f0f2f5;
+  --color-bg-hover: #f9fafb;
+  --color-border-primary: #d0d7de;
+  --color-border-secondary: #e9eef2;
+  --color-border-tertiary: #f3f4f6;
+  --color-accent-primary: #0969da;
+  --color-accent-secondary: #2da44e;
+  --color-accent-danger: #cf222e;
+  --color-accent-muted: #8c959f;
+  --color-shadow-sm: rgba(140, 149, 159, 0.1);
+  --color-shadow-md: rgba(140, 149, 159, 0.2);
+
+  /* GitHub 原生排版系统 */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.75;
+
+  /* GitHub 间距/圆角/过渡系统 */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 16px;
+  --spacing-4: 24px;
+  --spacing-5: 32px;
+  --spacing-6: 40px;
+  --spacing-7: 48px;
+  --border-radius-sm: 3px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px;
+  --box-shadow-sm: 0 1px 2px var(--color-shadow-sm);
+  --box-shadow-md: 0 3px 6px var(--color-shadow-md);
+  --transition-default: 0.2s ease-in-out;
+  --transition-fast: 0.1s ease-in-out;
+}
+
+/* 深色模式：匹配 GitHub 原生 + 兼容 Tailwind dark: 前缀 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #e6edf3;
+    --color-text-secondary: #8b949e;
+    --color-text-tertiary: #484f58;
+    --color-text-link: #58a6ff;
+    --color-text-link-hover: #3b82f6;
+    --color-text-link-active: #2563eb;
+    --color-bg-primary: #0d1117;
+    --color-bg-secondary: #161b22;
+    --color-bg-tertiary: #21262d;
+    --color-bg-hover: #2a2f36;
+    --color-border-primary: #30363d;
+    --color-border-secondary: #21262d;
+    --color-border-tertiary: #2d333b;
+    --color-shadow-sm: rgba(0, 0, 0, 0.3);
+    --color-shadow-md: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ========== 整合原有样式 + GitHub 基础样式（Tailwind @layer 规范） ========== */
+@layer base {
+  /* 基础重置：修复盒模型/滚动/点击高亮 BUG */
+  * {
+    @apply m-0 p-0 box-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    @apply text-base leading-normal scroll-smooth;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px;
+  }
+
+  body {
+    @apply font-sans text-[--color-text-primary] bg-[--color-bg-primary] min-h-screen overflow-x-hidden;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-family-primary);
+    line-height: var(--line-height-normal);
+  }
+
+  /* 核心排版：GitHub 原生 + Tailwind 兼容 */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-[--line-height-tight] text-[--color-text-primary] mb-[--spacing-2] break-words;
+  }
+  h1 { @apply text-[--font-size-xl] mt-[--spacing-6]; }
+  h2 { 
+    @apply text-[--font-size-lg] mt-[--spacing-5] pb-[--spacing-1] border-b border-[--color-border-primary] w-full block; 
+  }
+  h3 { @apply text-[--font-size-md] mt-[--spacing-4]; }
+  h4 { @apply text-base; }
+  h5 { @apply text-[--font-size-sm]; }
+  h6 { @apply text-[--font-size-xs] text-[--color-text-secondary]; }
+
+  p { 
+    @apply mb-[--spacing-3] leading-[--line-height-loose] break-words; 
+  }
+
+  a { 
+    @apply text-[--color-text-link] no-underline transition-colors duration-[--transition-default] inline-block;
+  }
+  a:hover { @apply text-[--color-text-link-hover] underline; }
+  a:active { @apply text-[--color-text-link-active]; }
+
+  strong { @apply font-semibold; }
+  em { @apply italic; }
+
+  /* 代码样式：GitHub 原生 + 修复滚动/模糊 BUG */
+  code, pre {
+    @apply font-mono text-[--font-size-sm];
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
+  code {
+    @apply px-[0.2em] py-[0.4em] m-0 bg-[--color-bg-secondary] rounded-[--border-radius-sm] text-[--color-text-primary] break-words;
+  }
+  pre {
+    @apply p-[--spacing-3] bg-[--color-bg-secondary] rounded-[--border-radius-md] overflow-auto leading-normal mb-[--spacing-3] border border-[--color-border-secondary] scrollbar-thin;
+  }
+  pre::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  pre::-webkit-scrollbar-thumb {
+    @apply bg-[--color-border-primary] rounded-full;
+  }
+  pre::-webkit-scrollbar-track {
+    @apply bg-[--color-bg-tertiary] rounded-full;
+  }
+  pre code {
+    @apply p-0 bg-transparent rounded-none break-normal;
+  }
+
+  /* 列表/引用/表格：修复缩进/溢出 BUG */
+  ul, ol {
+    @apply mb-[--spacing-3] pl-[--spacing-4] list-outside;
+  }
+  li {
+    @apply mb-[--spacing-1] break-words;
+  }
+  li > ul, li > ol {
+    @apply mt-[--spacing-1] mb-0;
+  }
+
+  blockquote {
+    @apply m-0 mb-[--spacing-3] pl-[--spacing-3] border-l-4 border-[--color-border-primary] text-[--color-text-secondary] leading-[--line-height-loose] break-words;
+  }
+
+  table {
+    @apply w-full mb-[--spacing-3] border-collapse border-spacing-0 overflow-auto block;
+  }
+  th, td {
+    @apply p-[--spacing-2] px-[--spacing-3] border border-[--color-border-primary] break-words;
+  }
+  th {
+    @apply font-semibold bg-[--color-bg-secondary] text-left whitespace-nowrap;
+  }
+}
+
 @layer components {
+  /* 保留你原有微调样式 */
   .prose a {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
+  /* 保留你原有玻璃背景样式（适配 GitHub 暗色模式） */
+  .bg-frost {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    backdrop-filter: blur(6px);
+    /* 适配 GitHub 深色模式玻璃效果 */
+    @apply dark:bg-gradient-to-b dark:from-[rgba(255,255,255,0.03)] dark:to-[rgba(255,255,255,0.01)];
+  }
+
+  /* 通用组件：GitHub 原生 + Tailwind 工具类兼容 */
+  .btn {
+    @apply inline-block px-4 py-[5px] text-[--font-size-sm] font-medium leading-5 whitespace-nowrap cursor-pointer select-none border border-[--color-border-primary] rounded-[--border-radius-md] bg-[--color-bg-secondary] text-[--color-text-primary] transition-all duration-[--transition-default] outline-none relative;
+  }
+  .btn:hover {
+    @apply no-underline bg-[--color-bg-hover] border-[--color-border-primary];
+  }
+  .btn:active {
+    @apply bg-[--color-bg-tertiary] translate-y-px;
+  }
+  .btn:focus-visible {
+    @apply shadow-[0_0_0_3px_rgba(9,105,218,0.3)];
+  }
+  .btn-primary {
+    @apply bg-[--color-accent-primary] border-[--color-border-primary] text-white;
+  }
+  .btn-primary:hover {
+    @apply bg-[--color-text-link-hover] text-white;
+  }
+  .btn-primary:active {
+    @apply bg-[--color-text-link-active] text-white;
+  }
+
+  .input, textarea {
+    @apply block w-full px-3 py-[5px] text-[--font-size-sm] leading-5 text-[--color-text-primary] bg-[--color-bg-primary] border border-[--color-border-primary] rounded-[--border-radius-md] outline-none shadow-[inset_0_1px_2px_var(--color-shadow-sm)] transition-all duration-[--transition-default] break-words resize-none;
+  }
+  .input:focus, textarea:focus {
+    @apply border-[--color-accent-primary] shadow-[0_0_0_3px_rgba(9,105,218,0.3)];
+  }
+  .input:disabled, textarea:disabled {
+    @apply bg-[--color-bg-tertiary] text-[--color-text-tertiary] cursor-not-allowed;
+  }
+  textarea {
+    @apply min-h-[100px] resize-y overflow-y-auto;
+  }
+
+  /* 博客核心模块：GitHub 原生 UI + Tailwind 兼容 */
+  /* 导航栏 */
+  .navbar {
+    @apply w-full bg-[--color-bg-primary] border-b border-[--color-border-primary] py-[--spacing-2] px-[--spacing-4] sticky top-0 z-100 flex items-center justify-between flex-wrap;
+  }
+  .navbar-logo {
+    @apply flex items-center gap-[--spacing-2] text-[--color-text-primary] font-semibold text-[--font-size-md];
+  }
+  .navbar-logo:hover {
+    @apply no-underline text-[--color-text-link];
+  }
+  .navbar-menu {
+    @apply flex gap-[--spacing-3] flex-wrap;
+  }
+  .navbar-item {
+    @apply text-[--color-text-primary] text-[--font-size-sm] font-medium py-[--spacing-1] px-[--spacing-2] rounded-[--border-radius-sm] leading-5;
+  }
+  .navbar-item:hover {
+    @apply bg-[--color-bg-hover] text-[--color-text-link] no-underline;
+  }
+  .navbar-item.active {
+    @apply text-[--color-text-link] font-semibold;
+  }
+
+  /* 文章卡片 */
+  .article-card {
+    @apply bg-[--color-bg-primary] border border-[--color-border-primary] rounded-[--border-radius-md] shadow-[--box-shadow-sm] p-[--spacing-3] mb-[--spacing-3] transition-shadow duration-[--transition-default] transition-transform duration-[--transition-fast];
+  }
+  .article-card:hover {
+    @apply shadow-[--box-shadow-md] -translate-y-0.5;
+  }
+  .article-card-title {
+    @apply text-[--font-size-lg] font-semibold mb-[--spacing-1] text-[--color-text-link];
+  }
+  .article-card-title:hover {
+    @apply underline;
+  }
+  .article-card-meta {
+    @apply text-[--font-size-xs] text-[--color-text-secondary] mb-[--spacing-2] flex gap-[--spacing-3];
+  }
+  .article-card-excerpt {
+    @apply text-[--color-text-primary] leading-[--line-height-loose] mb-[--spacing-2] line-clamp-3;
+  }
+  .article-card-tag {
+    @apply inline-block px-2 py-0.5 text-[--font-size-xs] text-[--color-text-secondary] bg-[--color-bg-secondary] rounded-full mr-[--spacing-1];
+  }
+
+  /* 评论区 */
+  .comment-container {
+    @apply mt-[--spacing-5] border-t border-[--color-border-primary] pt-[--spacing-4];
+  }
+  .comment-header {
+    @apply text-[--font-size-md] font-semibold mb-[--spacing-3];
+  }
+  .comment-item {
+    @apply flex gap-[--spacing-3] mb-[--spacing-4] flex-wrap;
+  }
+  .comment-avatar {
+    @apply w-10 h-10 rounded-full bg-[--color-bg-secondary] object-cover flex-shrink-0;
+  }
+  .comment-content {
+    @apply flex-1 min-w-[280px];
+  }
+  .comment-author {
+    @apply font-semibold text-[--color-text-primary] mb-[--spacing-1] flex items-center gap-[--spacing-1];
+  }
+  .comment-time {
+    @apply text-[--font-size-xs] text-[--color-text-secondary] font-normal;
+  }
+  .comment-body {
+    @apply text-[--color-text-primary] leading-[--line-height-loose] mb-[--spacing-2] break-words;
+  }
+  .comment-actions {
+    @apply flex gap-[--spacing-3] text-[--font-size-xs];
+  }
+  .comment-action {
+    @apply text-[--color-text-secondary];
+  }
+  .comment-action:hover {
+    @apply text-[--color-text-link] no-underline;
+  }
+
+  /* 页脚 */
+  .footer {
+    @apply w-full border-t border-[--color-border-primary] py-[--spacing-4] px-[--spacing-4] mt-[--spacing-6] bg-[--color-bg-primary];
+  }
+  .footer-content {
+    @apply max-w-[1280px] mx-auto flex justify-between flex-wrap gap-[--spacing-4] w-full;
+  }
+  .footer-links {
+    @apply flex gap-[--spacing-3] text-[--font-size-xs];
+  }
+  .footer-copyright {
+    @apply text-[--font-size-xs] text-[--color-text-secondary];
+  }
+
+  /* 通用容器 */
+  .container {
+    @apply max-w-[1280px] mx-auto px-[--spacing-3] w-full;
+  }
 }
 
-/* 适度的背景玻璃效果（配合卡片样式） */
-.bg-frost {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  backdrop-filter: blur(6px);
+@layer utilities {
+  /* 自定义工具类：GitHub 原生 + Tailwind 补充 */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .text-underline-offset-3 {
+    text-underline-offset: 3px;
+  }
+}
+
+/* ========== 响应式适配：修复移动端 BUG + Tailwind 兼容 ========== */
+@media (max-width: 767px) {
+  .d-sm-none { @apply hidden !important; }
+  .d-sm-block { @apply block !important; }
+  
+  body { @apply px-[--spacing-2]; }
+  .card, .article-card { @apply p-[--spacing-2]; }
+  pre { @apply p-[--spacing-2]; }
+  
+  /* 导航栏移动端适配 */
+  .navbar {
+    @apply px-[--spacing-2] gap-[--spacing-2];
+  }
+  .navbar-menu {
+    @apply w-full mt-[--spacing-2] gap-[--spacing-1];
+  }
+  
+  /* 评论区移动端适配 */
+  .comment-item {
+    @apply flex-col gap-[--spacing-2];
+  }
+  .comment-avatar {
+    @apply w-8 h-8;
+  }
+  .comment-content {
+    @apply min-w-full;
+  }
+  
+  /* 页脚移动端适配 */
+  .footer-content {
+    @apply flex-col gap-[--spacing-2];
+  }
+  .footer-links {
+    @apply flex-wrap;
+  }
+}
+
+/* 4K 大屏适配 */
+@media (min-width: 1920px) {
+  .container {
+    @apply max-w-[1600px];
+  }
+  :root {
+    font-size: 18px;
+  }
 }
