@@ -8,3 +8,69 @@ date: "2023-01-08"
 
 如何嵌入视频
 `<iframe src="/home.mp4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="800" height="450"> </iframe>`
+
+好的 👍
+我给你做一个 兼容 GitHub + 本地预览 的 Markdown 视频插入模板，支持 本地视频 和 在线视频 两种情况，并且在不支持视频的环境下自动显示封面并跳转播放页。
+
+Markdown 视频插入通用模板
+Markdown<!-- 本地视频（支持本地预览 & GitHub Pages） -->
+<video src="video.mp4" 
+       controls 
+       width="640" 
+       poster="cover.jpg">
+  <a href="video.mp4">点击这里播放视频</a>
+</video>
+
+---
+
+<!-- 在线视频（Bilibili / YouTube 等） -->
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD" 
+        scrolling="no" 
+        border="0" 
+        frameborder="no" 
+        allowfullscreen="true" 
+        width="640" 
+        height="360">
+</iframe>
+
+---
+
+<!-- 兼容性回退方案（封面 + 链接） -->
+[![点击播放视频](cover.jpg)](https://www.bilibili.com/video/BV1xx411c7mD)
+
+
+使用说明
+
+
+本地视频
+
+video.mp4：替换为你的视频文件路径（相对路径或绝对路径）。
+poster="cover.jpg"：视频封面图片路径，可选。
+<a href="video.mp4">：在不支持 <video> 的环境下提供下载/播放链接。
+
+
+
+在线视频
+
+src 使用视频平台提供的 嵌入链接（不是普通播放页 URL）。
+Bilibili 获取方法：视频页面 → 分享 → 嵌入代码 → 复制 iframe 部分。
+YouTube 获取方法：视频页面 → 分享 → 嵌入 → 复制 iframe。
+
+
+
+兼容性回退
+
+使用 Markdown 图片语法 [![封面](图片)](视频链接)，点击图片跳转到视频播放页。
+适用于 GitHub README 等不支持 <iframe> 的地方。
+
+
+
+
+✅ 特点：
+
+本地预览可直接播放（浏览器支持 HTML5 video）。
+GitHub Pages / 博客可直接嵌入。
+不支持视频的环境自动显示封面并可点击跳转。
+
+
+
