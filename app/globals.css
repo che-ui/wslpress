@@ -299,3 +299,17 @@ html.dark {
     font-size: 18px;
   }
 }
+
+/* 在 app/globals.css 的 @layer components 内添加 */
+/* 适配原仓库的视频装饰样式 + 预加载优化 */
+.hero-video {
+  @apply absolute inset-0 w-full h-full object-cover;
+}
+/* 预加载进度优化（可选，提升体验） */
+video[preload="auto"] {
+  @apply transition-opacity duration-500;
+  opacity: 0;
+}
+video[preload="auto"].loaded {
+  opacity: 1;
+}
