@@ -1,6 +1,6 @@
 ---
-title: Server and Client Components
-description: React Server Components allow developers to build applications that span the server and client.
+title: 如何在wslpress中快速插入图片和视频（多种方式）
+description: 使用wslp提供的工具快速插入多媒体
 date: "2023-01-08"
 ---
 
@@ -71,6 +71,204 @@ YouTube 获取方法：视频页面 → 分享 → 嵌入 → 复制 iframe。
 本地预览可直接播放（浏览器支持 HTML5 video）。
 GitHub Pages / 博客可直接嵌入。
 不支持视频的环境自动显示封面并可点击跳转。
+
+
+===
+
+好的 👍
+我帮你做一个 增强版 Markdown + JS 混合方案，它会自动检测浏览器是否支持 <video> 播放，如果支持就直接播放，不支持则自动显示封面并跳转到视频播放页。
+这样可以 本地预览、博客、GitHub Pages 都兼容，而且用户体验更好。
+
+智能视频插入模板（Markdown + JS）
+Markdown<!-- 智能视频插入模板 -->
+<div id="smart-video" style="max-width: 640px;">
+  <video id="myVideo" width="640" controls poster="cover.jpg">
+    <source src="video.mp4" type="video/mp4">
+    您的浏览器不支持 HTML5 视频。
+  </video>
+  <div id="fallback" style="display:none;">
+    <a href="https://www.bilibili.com/video/BV1xx411c7mD" target="_blank">
+      <img src="cover.jpg" alt="点击播放视频" style="width:100%;">
+    </a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var video = document.getElementById('myVideo');
+  var fallback = document.getElementById('fallback');
+
+  // 检测浏览器是否支持 video 标签
+  if (!video || !video.canPlayType) {
+    video.style.display = 'none';
+    fallback.style.display = 'block';
+    return;
+  }
+
+  // 检测是否能播放 mp4
+  if (video.canPlayType('video/mp4') === '') {
+    video.style.display = 'none';
+    fallback.style.display = 'block';
+  }
+})();
+</script>
+
+
+使用方法
+
+
+替换资源路径
+
+video.mp4 → 你的本地或网络视频文件。
+cover.jpg → 视频封面图片。
+https://www.bilibili.com/video/BV1xx411c7mD → 视频播放页链接（回退用）。
+
+
+
+工作原理
+
+JS 检测浏览器是否支持 <video> 标签。
+如果支持且能播放 MP4 → 直接显示视频播放器。
+如果不支持 → 显示封面图片，点击跳转到视频播放页。
+
+
+
+兼容性
+
+本地预览：直接播放。
+博客 / GitHub Pages：支持 HTML5 的浏览器直接播放。
+不支持 HTML5 video 的环境：自动显示封面并跳转。
+
+
+
+
+💡 优点：
+
+自动适配不同环境。
+用户体验好（支持的直接播放，不支持的自动跳转）。
+代码简单易维护。
+
+===
+好，那我帮你做一个 全自动多平台视频插入器 🚀
+只需要提供 视频类型（bilibili / youtube / local）和 视频 ID 或 URL，它会自动选择最佳播放方式：
+
+本地视频 → <video> 标签播放，支持封面和回退链接
+Bilibili / YouTube → 优先用 <iframe> 嵌入，若不支持则显示封面并跳转
+
+
+全自动多平台视频插入器（Markdown + JS）
+Markdown<!-- 自动视频插入器 -->
+<div id="video-container" style="max-width: 640px;"></div>
+
+<script>
+(function() {
+  /**
+   * 自动插入视频
+   * @param {string} type - 视频类型: 'local', 'bilibili', 'youtube'
+   * @param {string} source - 本地视频路径或视频ID/URL
+   * @param {string} cover - 封面图片路径
+   */
+  function insertVideo(type, source, cover) {
+    var container = document.getElementById('video-container');
+    var html = '';
+
+    if (type === 'local') {
+      // 本地视频
+      html = `
+        <video width="640" controls poster="${cover}">
+          <source src="${source}" type="video/mp4">
+          您的浏览器不支持 HTML5 视频。
+        </video>
+        <div>
+          <a href="${source}" target="_blank">点击这里播放视频</a>
+        </div>
+      `;
+    } 
+    else if (type === 'bilibili') {
+      // Bilibili 视频
+      var bvid = source.includes('BV') ? source : '';
+      var iframeSrc = bvid 
+        ? `https://player.bilibili.com/player.html?bvid=${bvid}&page=1` 
+        : source;
+      html = `
+        <iframe src="${iframeSrc}" 
+                scrolling="no" 
+                border="0" 
+                frameborder="no" 
+                allowfullscreen="true" 
+                width="640" 
+                height="360">
+        </iframe>
+        <div>
+          <a href="https://www.bilibili.com/video/${bvid}" target="_blank">
+            <img src="${cover}" alt="点击播放视频" style="width:100%;">
+          </a>
+        </div>
+      `;
+    } 
+    else if (type === 'youtube') {
+      // YouTube 视频
+      var videoId = source.length === 11 ? source : '';
+      var iframeSrc = videoId 
+        ? `https://www.youtube.com/embed/${videoId}` 
+        : source;
+      html = `
+        <iframe width="640" height="360" 
+                src="${iframeSrc}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+        <div>
+          <a href="https://youtu.be/${videoId}" target="_blank">
+            <img src="${cover}" alt="点击播放视频" style="width:100%;">
+          </a>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+  }
+
+  // ======== 使用示例 ========
+  // 本地视频
+  // insertVideo('local', 'video.mp4', 'cover.jpg');
+
+  // Bilibili 视频（传 BV 号）
+  // insertVideo('bilibili', 'BV1xx411c7mD', 'cover.jpg');
+
+  // YouTube 视频（传视频ID）
+  insertVideo('youtube', 'dQw4w9WgXcQ', 'cover.jpg');
+
+})();
+</script>
+
+
+使用方法
+
+放到 Markdown 文件中（支持 HTML 的地方，例如博客、GitHub Pages）。
+修改 insertVideo() 的参数：
+
+type：local / bilibili / youtube
+source：
+
+local → 视频文件路径（如 video.mp4）
+bilibili → BV 号（如 BV1xx411c7mD）
+youtube → 视频 ID（如 dQw4w9WgXcQ）
+
+
+cover：封面图片路径
+
+
+只需改一行 insertVideo(...) 就能切换视频来源。
+
+
+✅ 优点
+
+一个函数支持 本地 / Bilibili / YouTube 三种视频源
+自动生成播放器和回退封面
+代码可直接放在 Markdown 中使用
+方便维护，只改一行就能换视频
 
 
 
