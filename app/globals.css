@@ -19,6 +19,9 @@
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --border-radius-md: 6px;
   --transition-default: 0.2s ease-in-out;
+  --color-table-header-bg: #f3f4f6;
+  --color-table-row-bg: #ffffff;
+  --color-table-row-hover-bg: #f9fafb;
 }
 
 /* 关键：绑定 html.dark 确保夜间模式变量生效（覆盖框架默认样式） */
@@ -33,6 +36,9 @@ html.dark {
   --color-bg-tertiary: #21262d;
   --color-border-primary: #30363d;
   --color-border-secondary: #21262d;
+  --color-table-header-bg: #1f2937;
+  --color-table-row-bg: #111827;
+  --color-table-row-hover-bg: #1a202c;
 }
 
 /* ========== 2. 基础样式（Next.js + Tailwind 规范） ========== */
@@ -299,3 +305,42 @@ html.dark {
     font-size: 18px;
   }
 }
+
+  /* Table styles */
+  .prose table {
+    @apply w-full border-collapse my-6;
+    border-color: var(--color-border);
+    transition: border-color 0.3s ease;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .prose th,
+  .prose td {
+    @apply p-3 text-left align-top border;
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .prose th {
+    @apply font-semibold;
+    background-color: var(--color-table-header-bg);
+  }
+
+  .prose tr {
+    background-color: var(--color-table-row-bg);
+    transition: background-color 0.3s ease;
+  }
+
+  .prose tr:nth-child(even) {
+    background-color: var(--color-table-row-hover-bg);
+  }
+
+  .prose tr:hover {
+    background-color: var(--color-table-row-hover-bg);
+  }
