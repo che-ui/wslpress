@@ -10,7 +10,7 @@
 
 WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博客模板，融合了前沿的前端技术栈与优雅的视觉设计，支持暗色模式、响应式布局和可视化内容管理，让你无需关注复杂配置，专注于内容创作。
 
-由 **Wingsly** & **TWINGS CORPORATION** 开发 | 🌐 [在线演示](https://wslpress.taiwan.mrche.top)
+由 **@che-ui** 开发 | 🌐 [在线演示](https://wslpress.taiwan.mrche.top)
 
 ---
 
