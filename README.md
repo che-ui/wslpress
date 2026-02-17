@@ -1,12 +1,12 @@
 ![WSL logo](/wslp.png)
 
-# WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客模板
+# WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架
 
 # WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
 轻量高效的现代博客模板，基于 Next.js 13 + Contentlayer + Tailwind CSS 构建
 
-如果您需要快速插入图片，可使用我们为您提供的工具🌐 [WSLpress-图片压缩转Markdown Base64工具](https://wslpress-base64-image-tool.taiwan.mrche.top)
+如果您需要快速插入图片，可使用我们为您提供的工具🌐 [WSLpress-图片压缩转Markdown Base64工具](https://wslpress-base64-image-tool.mrche.top)
 
 WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博客模板，融合了前沿的前端技术栈与优雅的视觉设计，支持暗色模式、响应式布局和可视化内容管理，让你无需关注复杂配置，专注于内容创作。
 
@@ -22,9 +22,11 @@ WSLpress（Wingsly Press）是一款为开发者和内容创作者设计的博�
 
 - **美观易用的 UI**：Tailwind CSS 驱动的响应式设计，内置精心设计的首页 Hero 区和文章卡片
 
+- **SEO友好**：本站仅上线10天不到时，Bing权重国内版、国际版、海外版均排名第一
+
 - **暗色模式**：自动跟随系统偏好，也支持手动切换，适配不同阅读场景
 
-- **可视化 CMS**：集成 Netlify (Decap) CMS，非技术用户也能轻松发布/编辑文章
+- **可视化 CMS**：集成 Netlify (Decap) CMS，非技术用户也能轻松发布/编辑文章（由于学业繁忙，目前尚在维护中，极度不建议启用）
 
 - **开发体验优化**：ESLint 配置、TypeScript 类型校验、Tailwind 工具类快速开发
 
