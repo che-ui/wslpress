@@ -1,4 +1,4 @@
-![WSL logo](/wslp.png)
+![WSL logo](/wslpress-new-logo.svg)
 
 # WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架
 
