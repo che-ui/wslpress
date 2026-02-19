@@ -295,7 +295,7 @@ module.exports = {
 
 ## 📄 许可证
 
-本项目基于 [GPL v3 许可证](LICENSE) 开源，你可以自由使用、修改和分发，无需额外授权。
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -312,6 +312,3 @@ module.exports = {
 ---
 
 🌟 如果你喜欢这个模板，欢迎给仓库点个 Star 支持我们！
-
-## License
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
