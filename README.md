@@ -1,8 +1,6 @@
 ![WSL logo](/wslpress-new-logo.svg)
 
-# WSLpress (WSLpress) 威慑力·轻翼
-
-基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
+# WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
 
 # WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
