@@ -21,13 +21,13 @@ export default function HomeHero() {
                 href="/rss.xml"
                 className="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur"
               >
-                订阅RSS
+                🛜 订阅RSS
               </Link>
               <Link
                 href="/search"
                 className="inline-flex items-center rounded-md bg-white text-slate-900 px-4 py-2 text-sm font-medium shadow-sm"
               >
-                全局搜索
+                🔍 全局搜索
               </Link>
             </div>
           </div>
