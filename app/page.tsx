@@ -34,7 +34,7 @@ export default function Home() {
             href="https://github.com/che-ui/wslpress/"
             className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-slate-900 text-white hover:bg-slate-700 transition"
           >
-            在Github上查看本项目
+            ✨ 在Github上查看本项目
           </Link>
         </div>
       </div>
