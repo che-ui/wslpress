@@ -201,7 +201,7 @@ wslpress/
 
 6. 得到一个 `.pages.dev` 三级域名，已被封。但可以绑定自定义域名
 
-7. 然后按教程去做https://wslpress.taiwan.mrche.top/posts/deploying-wsl-on-cfpages
+7. 然后按教程去做：[使用 Cloudflare Pages 部署 WSLpress 的用户：请注意](https://wslpress.taiwan.mrche.top/posts/deploying-wsl-on-cfpages)
 
 ### 方案 4：通过直接上传资产部署到 Cloudflare Pages（建议不会科学上网的小白使用）
 
