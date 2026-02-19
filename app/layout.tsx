@@ -34,8 +34,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="flex items-center justify-between">
                 <ModeToggle />
                 <nav className="ml-auto text-sm font-medium space-x-6">
-                  <Link href="/">首页</Link>
-                  <Link href="/about">关于</Link>
+                  <Link href="/">🚗 首页</Link>
+                  <Link href="/about">😊 关于</Link>
                 </nav>
               </div>
             </header>
