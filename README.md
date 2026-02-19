@@ -159,6 +159,8 @@ wslpress/
 
 ### 方案 1：部署到 Vercel（推荐）
 
+示例：https://wslpress.vercel.app/，即https://wslpress.taiwan.mrche.top/
+
 1. 访问 [Vercel](https://vercel.com/) 并登录
 
 2. 点击 "New Project"，导入 `wslpress` 仓库
@@ -170,6 +172,8 @@ wslpress/
 5. 绑定域名（可选），但国内用户无法访问 `.vercel.app` ，请知晓
 
 ### 方案 2：部署到 Netlify
+
+示例：https://wslpress.netlify.app/
 
 1. 访问 [Netlify](https://www.netlify.com/) 并登录
 
@@ -188,6 +192,8 @@ wslpress/
 6. 得到一个 `.netlify.app` 三级域名，截止2026.2.3国内均可正常访问，但使用中国移动蜂窝网络访问可能会不稳定，请知晓。
 
 ### 方案 3：正常方法部署到 Cloudflare Pages（不是Worker！）
+
+示例：https://wslpress.pages.dev/
 
 1. 访问 [Cloudflare Dashboard](https://dash.cloudflare.com/) 并登录
 
