@@ -336,3 +336,20 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 特此声明。
 
 **WSLPress 项目维护者：@che-ui**
+
+---
+
+Если вы не используете упрощённый китайский, пожалуйста, выберите файл README на соответствующем языке в корневом каталоге в соответствии со своей страной или регионом.
+
+Falls Sie kein vereinfachtes Chinesisch verwenden, wählen Sie bitte im Stammverzeichnis die README in der für Ihr Land oder Ihre Region entsprechenden Sprache aus.
+
+간체중국어 사용자가 아닌 경우, 귀하의 국가 또는 지역에 따라 루트 디렉토리에서 해당 언어의 README 파일을 선택해 주세요.
+
+如非簡體中文使用者，請根據您所處的國家或地區，在根目錄選擇相應語言的README文件。
+
+Si vous n'utilisez pas le chinois simplifié, veuillez sélectionner le README dans la langue correspondante à votre pays ou région dans le répertoire racine.
+
+Mura úsáideoir Sínis Shimplí thú, roghnaigh an README sa teanga is cuí de réir do thíre nó do réigiúin san eolaire fréimhe, le do thoil.
+
+إذا لم تكن مستخدمًا للصينية المبسطة، يُرجى اختيار ملف README باللغة المناسبة حسب بلدك أو منطقتك في الدليل الجذري.
+
