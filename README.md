@@ -159,7 +159,9 @@ wslpress/
 
 ### 方案 1：部署到 Vercel（推荐）
 
-示例：https://wslpress.vercel.app/，即https://wslpress.taiwan.mrche.top/
+示例：
+https://wslpress.vercel.app/
+https://wslpress.taiwan.mrche.top/
 
 1. 访问 [Vercel](https://vercel.com/) 并登录
 
