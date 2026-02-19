@@ -299,7 +299,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ---
 
-## 📞 联系我们
+## 📞 联系我们&官方声明
 
 如果有任何问题或建议，欢迎通过以下方式联系：
 
@@ -307,7 +307,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 - 官方反馈平台提交（推荐）：🌐 [点此进入](https://wslpress.taiwan.mrche.top/feedback.html)
 
-- 开发者：che-ui（中国初中生，GitHub 仓库维护者）
+- 开发者：che-ui（中国初中生，WSLpress的GitHub 仓库维护者）
 
 ---
 
