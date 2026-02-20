@@ -1,7 +1,8 @@
 ![WSL logo](/wslpress-new-logo.svg)
 
-# WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
+# WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
+
+---
 
 - ❗2026年2月20日将是这个框架的最后更新日期，我们预计在2026年7月1日左右重启本项目，在此期间我们将不再提供更新，但您仍可以正常使用本框架
 - ❗20 февраля 2026 года станет датой последнего обновления данной структуры. Мы планируем возобновить данный проект около 1 июля 2026 года. В этот период мы больше не будем предоставлять обновления, но вы по-прежнему сможете нормально использовать данную структуру.
@@ -10,6 +11,8 @@
 - ❗Is é an 20 Feabhra 2026 an dáta nuashonraithe deiridh don chreat seo. Táimid ag súil go dtosóimid an tionscadal seo arís timpeall 1 Iúil 2026. San am seo, ní sholáthróimid aon nuashonruithe breise, ach is féidir leat an creat a úsáid go normálta fós.
 - ❗Le 20 février 2026 sera la dernière date de mise à jour de ce cadre. Nous prévoyons de relancer ce projet vers le 1er juillet 2026. Pendant cette période, nous ne fournirons plus de mises à jour, mais vous pourrez toujours utiliser ce cadre normalement.
 - ❗2026年2月20日將是本框架的最後更新日期，我們預計在2026年7月1日左右重啟本專案。在此期間，我們將不再提供更新，但您仍可正常使用本框架。
+
+---
 
 # WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
@@ -172,6 +175,9 @@ wslpress/
 
 ### 方案 1：部署到 Vercel（推荐）
 
+您也可以直接一键部署：
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
+
 示例：
 https://wslpress.vercel.app/
 https://wslpress.taiwan.mrche.top/
@@ -187,6 +193,9 @@ https://wslpress.taiwan.mrche.top/
 5. 绑定域名（可选），但国内用户无法访问 `.vercel.app` ，请知晓
 
 ### 方案 2：部署到 Netlify
+
+您也可以直接一键部署：
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
 
 示例：https://wslpress.netlify.app/
 
