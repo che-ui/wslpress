@@ -2,13 +2,13 @@
 
 # WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
 
-❗2026年2月20日将是这个框架的最后更新日期，我们预计在2026年7月1日左右重启本项目，在此期间我们将不再提供更新，但您仍可以正常使用本框架
-❗20 февраля 2026 года станет датой последнего обновления данной структуры. Мы планируем возобновить данный проект около 1 июля 2026 года. В этот период мы больше не будем предоставлять обновления, но вы по-прежнему сможете нормально использовать данную структуру.
-❗February 20, 2026 will be the final update date for this framework. We expect to restart this project around July 1, 2026. During this period, we will no longer provide updates, but you can still use this framework normally.
-❗2026년 2월 20일은 본 프레임워크의 마지막 업데이트 날짜가 될 것입니다. 우리는 2026년 7월 1일경 본 프로젝트를 재개할 예정입니다. 이 기간 동안 더 이상 업데이트를 제공하지 않지만, 본 프레임워크는 정상적으로 사용하실 수 있습니다.
-❗Is é an 20 Feabhra 2026 an dáta nuashonraithe deiridh don chreat seo. Táimid ag súil go dtosóimid an tionscadal seo arís timpeall 1 Iúil 2026. San am seo, ní sholáthróimid aon nuashonruithe breise, ach is féidir leat an creat a úsáid go normálta fós.
-❗Le 20 février 2026 sera la dernière date de mise à jour de ce cadre. Nous prévoyons de relancer ce projet vers le 1er juillet 2026. Pendant cette période, nous ne fournirons plus de mises à jour, mais vous pourrez toujours utiliser ce cadre normalement.
-❗2026年2月20日將是本框架的最後更新日期，我們預計在2026年7月1日左右重啟本專案。在此期間，我們將不再提供更新，但您仍可正常使用本框架。
+- ❗2026年2月20日将是这个框架的最后更新日期，我们预计在2026年7月1日左右重启本项目，在此期间我们将不再提供更新，但您仍可以正常使用本框架
+- ❗20 февраля 2026 года станет датой последнего обновления данной структуры. Мы планируем возобновить данный проект около 1 июля 2026 года. В этот период мы больше не будем предоставлять обновления, но вы по-прежнему сможете нормально использовать данную структуру.
+- ❗February 20, 2026 will be the final update date for this framework. We expect to restart this project around July 1, 2026. During this period, we will no longer provide updates, but you can still use this framework normally.
+- ❗2026년 2월 20일은 본 프레임워크의 마지막 업데이트 날짜가 될 것입니다. 우리는 2026년 7월 1일경 본 프로젝트를 재개할 예정입니다. 이 기간 동안 더 이상 업데이트를 제공하지 않지만, 본 프레임워크는 정상적으로 사용하실 수 있습니다.
+- ❗Is é an 20 Feabhra 2026 an dáta nuashonraithe deiridh don chreat seo. Táimid ag súil go dtosóimid an tionscadal seo arís timpeall 1 Iúil 2026. San am seo, ní sholáthróimid aon nuashonruithe breise, ach is féidir leat an creat a úsáid go normálta fós.
+- ❗Le 20 février 2026 sera la dernière date de mise à jour de ce cadre. Nous prévoyons de relancer ce projet vers le 1er juillet 2026. Pendant cette période, nous ne fournirons plus de mises à jour, mais vous pourrez toujours utiliser ce cadre normalement.
+- ❗2026年2月20日將是本框架的最後更新日期，我們預計在2026年7月1日左右重啟本專案。在此期間，我們將不再提供更新，但您仍可正常使用本框架。
 
 # WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
