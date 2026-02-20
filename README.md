@@ -1,6 +1,7 @@
 ![WSL logo](/wslpress-new-logo.svg)
 
-# WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
+# WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fche-ui%2Fwslpress)
 
 - ❗2026年2月20日将是这个框架的最后更新日期，我们预计在2026年7月1日左右重启本项目，在此期间我们将不再提供更新，但您仍可以正常使用本框架
 - ❗20 февраля 2026 года станет датой последнего обновления данной структуры. Мы планируем возобновить данный проект около 1 июля 2026 года. В этот период мы больше не будем предоставлять обновления, но вы по-прежнему сможете нормально использовать данную структуру.
