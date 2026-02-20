@@ -1,6 +1,6 @@
 ![WSL logo](/wslpress-new-logo.svg)
 
-# WSLpress (WSLpress) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
+# WSLpress (Wingsly Press) 威慑力·轻翼：基于 Next.js、Contentlayer 和 Tailwind 的现代博客框架，专为简体中文用户打造，拥有全界面汉化与完整本土生态兼容性的博客框架
 
 # WSLpress 🚀 [![Netlify Status](https://api.netlify.com/api/v1/badges/c69cc1c0-6349-4e44-83b9-bfbbc25417ae/deploy-status)](https://app.netlify.com/projects/wslpress/deploys)
 
@@ -315,9 +315,9 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ---
 
-**关于项目名称 “WSLPress” 的正式声明**
+**关于项目名称 “WSLpress” 的正式声明**
 
-本项目 **WSLPress**（一个静态博客生成框架）特此声明：
+本项目 **WSLpress**（一个静态博客生成框架）特此声明：
 
 **与微软（Microsoft）的 Windows Subsystem for Linux（WSL）技术与产品无任何隶属、依赖或关联关系。**
 
@@ -325,7 +325,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 1.  **名称说明**：本项目名称中的 “WSL” 仅为标识，指代“威慑力”。不代表其依赖于 Windows WSL 技术才能运行。它只是一个静态博客框架。
 2.  **无关联声明**：本项目并非由微软开发、赞助或认可。微软的 “WSL” 是其独立的操作系统兼容层技术商标。
-3.  **项目独立性**：WSLPress 是一个独立的开源静态网站生成工具，其设计、开发与维护均与微软官方无关。
+3.  **项目独立性**：WSLpress 是一个独立的开源静态网站生成工具，其设计、开发与维护均与微软官方无关。
 4.  **名称由来**：名称最初的灵感源于Wingsly，像翼般轻量，与微软官方无关。
 5.  **使用范围**：用户可在任何支持其运行环境的平台上使用本框架，无需局限于 Windows 或 WSL。
 
@@ -335,7 +335,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 特此声明。
 
-**WSLPress 项目维护者：@che-ui**
+**WSLpress 项目维护者：@che-ui**
 
 ---
 
