@@ -353,3 +353,6 @@ Mura úsáideoir Sínis Shimplí thú, roghnaigh an README sa teanga is cuí de 
 
 إذا لم تكن مستخدمًا للصينية المبسطة، يُرجى اختيار ملف README باللغة المناسبة حسب بلدك أو منطقتك في الدليل الجذري.
 
+---
+
+During the development of WSLpress, we referred to relevant templates from Vercel and made extensive modifications and expansions on that basis. Approximately 6% of the initial structure references template code. The remaining approximately 34% of the code was generated with the assistance of AI such as Deepseek R1, Deepseek V3, doubao, and GPT 5.2 mini, and all of it has been manually reviewed, adjusted, and optimized by @che-ui.
